@@ -3,6 +3,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import { Test } from "./Test";
 import { Concept } from "./Concept";
+import { AJAXHandle } from "./AJAXHandle";
 
 function App() {
   return (
@@ -10,8 +11,8 @@ function App() {
       {/* <h1>Hello CMJD 111</h1>
       <h1>Hello CMJD 111</h1>
       <Test/> */}
-
-      <Concept/>
+      <AJAXHandle/>
+      {/* <Concept/> */}
     </>
   );
 }
