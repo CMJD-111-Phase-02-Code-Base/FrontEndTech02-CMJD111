@@ -16,12 +16,20 @@ export const AJAXHandle = () =>{
       xhr.send();
      }
 
-
+     const getDataFetch = () =>{
+         fetch("https://jsonplaceholder.typicode.com/posts")
+         .then( data =>{
+             console.log(data.json())
+         })
+         .catch(err=> console.error(err))
+     }
+     
     return(
         <>
         <h1>This is AJAX Handle Page</h1>
         <br />
         <button onClick={getData}>Get Data</button>
+        <button onClick={getDataFetch}>Get Data fro Fetch</button>
         </>
     )
 }
