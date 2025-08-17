@@ -1,18 +1,23 @@
 import { Table } from "react-bootstrap";
 
 export const CourseMaterial = () =>{
+    const tblHeaders : string [] = [
+        "Material ID",
+        "File Name",
+        "Material Name",
+        "Material",
+        "Upload Time",
+        "Course ID",
+        "Option",
+    ];
     return(
         <>
          <Table striped bordered hover>
       <thead>
         <tr>
-          <th>Material ID</th>
-          <th>File Name</th>
-          <th>Material Name</th>
-          <th>Material</th>
-          <th>Upload Time</th>
-          <th>Course ID</th>
-          <th>Option</th>
+            {tblHeaders.map((headings,index)=>(
+                   <th key={index}>{headings}</th>
+            ))};
         </tr>
       </thead>
       <tbody>
