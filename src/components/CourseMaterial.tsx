@@ -12,6 +12,7 @@ export const CourseMaterial = () =>{
     ];
     return(
         <>
+        
          <Table striped bordered hover>
       <thead>
         <tr>
