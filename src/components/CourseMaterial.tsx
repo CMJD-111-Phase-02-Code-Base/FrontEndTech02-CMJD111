@@ -1,22 +1,22 @@
-import { Table } from "react-bootstrap";
+import {Table} from "react-bootstrap";
 import {useEffect, useState} from "react";
 import {getCourseMaterial} from "../service/CourseMaterialService";
-import {CourseMaterialodel} from "../model.CourseMaterialodel";
+import {CourseMaterialodel} from "../model/CourseMaterialodel";
 
 
-export const CourseMaterial = () =>{
-    const [material,setMaterial] = useState<CourseMaterialodel[]>([]);
+export const CourseMaterial = () => {
+    const [material, setMaterial] = useState<CourseMaterialodel[]>([]);
 
     useEffect(() => {
-        const getCourseaterialData = async () =>{
-           const courseMaterialData = await getCourseMaterial();
+        const getCourseaterialData = async () => {
+            const courseMaterialData = await getCourseMaterial();
             console.log(courseMaterialData);
             setMaterial(courseMaterialData);
         }
-            getCourseaterialData();
+        getCourseaterialData();
     }, []);
 
-    const tblHeaders : string [] = [
+    const tblHeaders: string [] = [
         "Material ID",
         "File Name",
         "Material Type",
@@ -26,29 +26,35 @@ export const CourseMaterial = () =>{
         "Option",
     ];
 
-    return(
+    return (
         <>
-         <Table striped bordered hover>
-      <thead>
-        <tr>
-            {tblHeaders.map((headings,index)=>(
-                   <th key={index}>{headings}</th>
-            ))};
-        </tr>
-      </thead>
-      <tbody>
-      {material.map((mat,index)=>(
-          <tr key={index}>
-              <td>{mat.materialId}</td>
-              <td>{mat.fileName}</td>
-              <td>{mat.materialType}</td>
-              <td>Test</td>
-              <td>{mat.uploadAt}</td>
-              <td>{mat.courseId}</td>
-          </tr>
-      ))}
-      </tbody>
-    </Table>
+            <Table striped bordered hover>
+                <thead>
+                <tr>
+                    {tblHeaders.map((headings, index) => (
+                        <th key={index}>{headings}</th>
+                    ))};
+                </tr>
+                </thead>
+                <tbody>
+                {material.map((mat, index) => (
+                    <tr key={index}>
+                        <td>{mat.materialId}</td>
+                        <td>{mat.fileName}</td>
+                        <td>{mat.materialType}</td>
+                        <td>
+                            <img
+                                src={`data:image/png;base64,${mat.material}`}
+                                alt="materialPreview"
+                                style={{width: "85px", height: "auto"}}
+                            />
+                        </td>
+                        <td>{mat.uploadAt}</td>
+                        <td>{mat.courseId}</td>
+                    </tr>
+                ))}
+                </tbody>
+            </Table>
         </>
     );
 } 
